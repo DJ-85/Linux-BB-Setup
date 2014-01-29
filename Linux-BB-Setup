@@ -1,0 +1,221 @@
+#!/bin/bash
+
+clear
+echo
+echo
+#lets get started with an intro.
+echo "|--------------------------------------|"
+echo "|--------------------------------------|"
+echo "|-- ++ --  @dj8218521 Twitter --- ++ --|"
+echo "|-- ++ --  @dj8218521 Github  --- ++ --|"
+echo "|--------------------------------------|"
+echo "|--------------------------------------|"
+echo
+echo "This scrpit file is designed to take a fresh install of Ubuntu 12.04 linux distro" 
+echo "and set-up the Android Build Environment"
+echo
+echo
+echo "Please enter your name to continue: "
+read imput_variable
+echo "Hello: $imput_variable"
+sleep 2
+echo "Ok, lets get started, we have a lot to install. . . . . "
+sleep 2
+echo "First thing we will do is install requried packages (Ubuntu 12.04) via source.android.com"
+sleep 1
+sudo apt-get install git gnupg flex bison gperf build-essential \  zip curl libc6-dev libncurses5-dev:i386 x11proto-core-dev \  libx11-dev:i386 libreadline6-dev:i386 libgl1-mesa-glx:i386 \  libgl1-mesa-dev g++-multilib mingw32 tofrodos \  python-markdown libxml2-utils xsltproc zlib1g-dev:i386 \  pngcrush schedtool
+sleep 3
+echo "IF YOU SEE UNABLE TO INSTALL PACKAGE ABOVE, --- PLEASE IGNORE--- "
+sleep 2
+echo "Ok now we will create a symlink"
+sleep 2
+sudo ln -s /usr/lib/i386-linux-gnu/mesa/libGL.so.1 /usr/lib/i386-linux-gnu/libGL.so
+sleep 2
+sudo apt-get install git-core
+sudo apt-get install curl
+sleep 2
+read -p "Press any key to continue... " -n1 -s
+clear
+
+# part 1 is done, we have the requeired packages from source.android.com
+# Now to the java
+
+echo
+echo
+echo "|--------------------------------------|"
+echo "|--------------------------------------|"
+echo "|-- ++ --  @dj8218521 Twitter --- ++ --|"
+echo "|-- ++ --  @dj8218521 Github  --- ++ --|"
+echo "|--------------------------------------|"
+echo "|--------------------------------------|"
+sleep 3
+
+echo "We can move to the installation of Android SDK and the required java"
+read -p "Press any key to continue. . . " -n1 -s
+
+echo
+echo 
+echo "Now to install the Oracle JDK 6"
+echo "This will take a some time depending on your internet connection"
+echo "Also, this java is for a 64 bit chipset, not 32"
+echo "You will be prompted to hit ENTER and OK, pay attention to that"
+sleep 8
+echo "Let's get moving ...."
+sleep 2
+sudo add-apt-repository ppa:webupd8team/java
+sleep 1
+sudo apt-get update
+sleep 1
+sudo add-apt-repository ppa:webupd8team/java
+sleep 1
+sudo update-java-alternatives -s java-6-oracle
+sleep 1
+sudo apt-get install oracle-java6-set-default
+sleep 1
+
+read -p "Press any key to continue... " -n1 -s
+
+echo
+echo
+echo "|--------------------------------------|"
+echo "|--------------------------------------|"
+echo "|-- ++ --  @dj8218521 Twitter --- ++ --|"
+echo "|-- ++ --  @dj8218521 Github  --- ++ --|"
+echo "|--------------------------------------|"
+echo "|--------------------------------------|"
+sleep 3
+
+# Part 2 done
+# Let's do the Android sdk now
+
+echo "Now that we have all that finished, we will need the Android SDK"
+sleep 5
+echo "Let's get started ...."
+echo "This will take some time, go grab a beer or something"
+sleep 2
+clear
+echo "Now Downloading"
+wget http://dl.google.com/android/android-sdk_r20-linux.tgz
+echo "Now to extract"
+tar -xvzf android-sdk_r20-linux.tgz
+
+read -p "Press any key to continue... " -n1 -s
+
+clear
+echo
+echo
+echo
+echo "|--------------------------------------|"
+echo "|--------------------------------------|"
+echo "|-- ++ --  @dj8218521 Twitter --- ++ --|"
+echo "|-- ++ --  @dj8218521 Github  --- ++ --|"
+echo "|--------------------------------------|"
+echo "|--------------------------------------|"
+sleep 3
+
+echo "OK, this part is importaint"
+echo "The android SDK Manager is going to pop-up"
+echo "When it does, at the bottom, you will see New in blue letters"
+echo "click New, then Accept All, then Install"
+
+read -p "Press any key to continue... " -n1 -s
+
+cd ~/android-sdk-linux/tools
+sleep 1
+./android
+
+read -p "Press any key to continue... " -n1 -s
+
+echo "Press it again lol"
+
+read -p "Press any key to continue... " -n1 -s
+
+echo "Ok lets clear the screen"
+sleep 2
+clear
+
+echo "|--------------------------------------|"
+echo "|--------------------------------------|"
+echo "|-- ++ --  @dj8218521 Twitter --- ++ --|"
+echo "|-- ++ --  @dj8218521 Github  --- ++ --|"
+echo "|--------------------------------------|"
+echo "|--------------------------------------|"
+sleep 3
+
+echo "Ok ..."
+
+echo "Now our machine is ready to compile android"
+echo "If you want to stop here, please hit control-c"
+echo "If you want to keep going, we will now build for Omni ROM"
+sleep 5
+echo "Why Omni ROM? Because, I like Omni ROM and it's clean"
+
+read -p "Press any key to continue... " -n1 -s
+
+clear
+echo
+echo
+echo
+echo "Let's get started .."
+
+mkdir -p ~/bin
+sleep 1
+mkdir -p ~/android/omni
+sleep 1
+curl http://commondatastorage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+sleep 1
+chmod a+x ~/bin/repo
+sleep 1
+echo "export PATH=~/bin:$PATH" >> ~/.bashrc
+sleep 1
+cd ~/android/omni
+sleep 1
+repo init -u https://github.com/omnirom/android.git -b android-4.4
+sleep 1
+
+read -p "Press any key to continue... " -n1 -s
+
+clear
+echo
+echo
+echo
+echo "Next we will need to configure git"
+echo "Press Control - T to open a new window"
+echo "After that you do this"
+echo "git config --global user.email your@email.address"
+echo "git config --global user.name Your Name"
+echo "You will need to put quotation marks around email and name"
+echo "Then type exit"
+
+read -p "Press any key to continue... " -n1 -s
+
+cd ~/android/omni
+sleep 1
+echo "Now to grad the repo, this will take some time"
+echo "Depending on CPU and connection, could take 2-8 hours"
+repo init -u https://github.com/omnirom/android.git -b android-4.4
+repo sync -j4 -f --no-clone-bundle
+sleep 3
+echo
+echo
+echo "If you get stuck here, just reboot machine and repo sync"
+echo "export USE_CCACHE=1" >> ~/.bashrc
+ ~/android/omni/prebuilts/misc/linux-x86/ccache/ccache -M 25G
+
+
+read -p "Press any key to continue... " -n1 -s
+
+clear
+echo
+echo
+echo
+echo "|--------------------------------------|"
+echo "|--------------------------------------|"
+echo "|-- ++ --  @dj8218521 Twitter --- ++ --|"
+echo "|-- ++ --  @dj8218521 Github  --- ++ --|"
+echo "|--------------------------------------|"
+echo "|--------------------------------------|"
+
+echo "ALL DONE !!"
+sleep 3
+exit
