@@ -1,9 +1,13 @@
 #!/bin/bash
 
 clear
+echo "type in your password, we're going root!"
+sudo su
 echo
 echo
 #hi
+echo
+echo
 echo "|--------------------------------------|"
 echo "|--------------------------------------|"
 echo "|-- ++ --  @dj8218521 Twitter --- ++ --|"
@@ -217,5 +221,30 @@ echo "|--------------------------------------|"
 echo "|--------------------------------------|"
 
 echo "ALL DONE !!"
+clear
+#hey its covxx!
+echo
+echo
+echo
+echo "|--------------------------------------|"
+echo "|--------------------------------------|"
+echo "|-- ++ --  @covxx Twitter --- ++ --|"
+echo "|-- ++ --  @CovXX Github  --- ++ --|"
+echo "|--------------------------------------|"
+echo "|--------------------------------------|"
+echo 
+echo
+echo "Gonna install some stuff like ruby and rvm and other shit"
+echo "hopefully curl is installed already eh lets do it again"
+sudo apt-get install curl
+echo "okay so maybe curl is installed if not you'll know"
+echo
+echo "Lets get rvm now"
+\curl -sSL https://get.rvm.io | bash -s stable
+rvm get stable --auto-dotfiles
+echo "time to install ruby"
+rvm install ruby-1.9.3-p547
+echo "cool done"
+echo "kbye"
 sleep 3
 exit
